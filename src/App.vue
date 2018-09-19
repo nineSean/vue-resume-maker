@@ -11,33 +11,32 @@
 </template>
 
 <script>
-  import "./assets/reset.css";
-  import "normalize.css/normalize.css";
+import "./assets/reset.css";
+import "normalize.css/normalize.css";
 
-  import Topbar from "./components/Topbar";
-  import ResumePreview from "./components/ResumePreview";
-  import ResumeEditor from "./components/ResumeEditor";
+import Topbar from "./components/Topbar";
+import ResumePreview from "./components/ResumePreview";
+import ResumeEditor from "./components/ResumeEditor";
 
-  export default {
-    name: "app",
-    data() {
-      return {
-        text: "welcome"
-      };
-    },
-    components: { Topbar, ResumePreview, ResumeEditor }
-  }
+export default {
+  name: "app",
+  data() {
+    return {
+      text: "welcome"
+    };
+  },
+  components: { Topbar, ResumePreview, ResumeEditor }
+};
 </script>
 
-<style>
-  body {
-    background-color: #545;
+<style lang="scss">
+body {
+  background-color: #545;
 
-    font: 20px/1.5 'STHeitiSC-Light', sans-serif;
-    display: flex;
-    justify-content: space-around;
-  }
-  #app{
+  font: 20px/1.5 "STHeitiSC-Light", sans-serif;
+  display: flex;
+  justify-content: space-around;
+  > #app {
     flex-grow: 1;
     max-width: 1440px;
     min-width: 1024px;
@@ -46,14 +45,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    > header {
+      width: 100%;
+    }
+    > main {
+      width: 100%;
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-around;
+    }
   }
-  #app>header{
-    width: 100%;
-  }
-  #app>main{
-    width: 100%;
-    flex-grow: 1;
-    display: flex;
-    justify-content: space-around;
-  }
+}
 </style>
