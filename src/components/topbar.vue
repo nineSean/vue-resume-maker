@@ -12,7 +12,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped lang="scss">
 #topbar {
   width: 100%;
   height: 64px;
@@ -22,26 +22,26 @@ export default {
   align-items: center;
   background: #ddd;
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.25);
+  > h1 {
+    flex-grow: 1;
+    font-size: 1.5em;
+  }
 }
-#topbar > h1 {
-  flex-grow: 1;
-  font-size: 1.5em;
-}
-#topbar > button {
+button {
   width: 72px;
   height: 32px;
   margin-left: 16px;
-}
-#topbar > button:hover {
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
-}
-#topbar > button:nth-child(1) {
-  color: #fff;
-  background: #02af5f;
-}
-#topbar > button:nth-child(2) {
-  color: #222;
-  background: #aaa;
+  &:hover {
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  }
+  &:nth-child(1) {
+    color: #fff;
+    background: #02af5f;
+  }
+  &:nth-child(2) {
+    color: #222;
+    background: #aaa;
+  }
 }
 </style>
 

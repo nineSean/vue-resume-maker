@@ -17,6 +17,7 @@ import "normalize.css/normalize.css";
 import Topbar from "./components/Topbar";
 import ResumePreview from "./components/ResumePreview";
 import ResumeEditor from "./components/ResumeEditor";
+import icons from "./assets/icons.js"
 
 export default {
   name: "app",
@@ -25,35 +26,41 @@ export default {
       text: "welcome"
     };
   },
-  components: { Topbar, ResumePreview, ResumeEditor }
+  components: { Topbar, ResumePreview, ResumeEditor },
+  created(){
+    document.body.insertAdjacentHTML('afterbegin', icons)
+  }
 };
 </script>
 
-<style lang="scss">
-body {
-  background-color: #545;
-
-  font: 20px/1.5 "STHeitiSC-Light", sans-serif;
+<style scoped lang="scss">
+#app {
+  flex-grow: 1;
+  max-width: 1440px;
+  min-width: 1024px;
+  height: 100vh;
+  margin: 0 auto;
+  padding-bottom: 12px;
   display: flex;
-  justify-content: space-around;
-  > #app {
-    flex-grow: 1;
-    max-width: 1440px;
-    min-width: 1024px;
-    height: 100vh;
-    padding-bottom: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    > header {
-      width: 100%;
-    }
-    > main {
-      width: 100%;
-      flex-grow: 1;
-      display: flex;
-      justify-content: space-around;
-    }
+  flex-direction: column;
+  align-items: center;
+  font: 18px/1.5 "STHeitiSC-Light", sans-serif;
+  background-color: #545;
+  > header {
+    width: 100%;
   }
+  > main {
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+svg.icon{
+  height: 1em;
+  width: 1em;
+  fill: currentColor;
+  vertical-align: -0.1em;
+  font-size: 16px;
 }
 </style>

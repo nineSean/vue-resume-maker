@@ -10,7 +10,7 @@
   }
 </script>
 
-<style>
+<style scoped lang="scss">
   #resumePreview{
     background-color: #fff;
 
