@@ -30,46 +30,21 @@
 <script>
   export default {
     name: 'ResumeEditor',
-    data(){
-      return {
-        selected: 'profile',
-        resume: {
-          config:[
-            {field: 'profile', icon: 'id'},
-            {field: 'working history', icon: 'work'},
-            {field: 'education', icon: 'book'},
-            {field: 'projects', icon: 'heart'},
-            {field: 'awards', icon: 'cup'},
-            {field: 'contacts', icon: 'phone'},
-          ],
-          profile: {
-            name: 'sean',
-            city: 'guangzhou',
-            title: 'frond-end developer'
-          },
-          'working history': [
-            {company: 'xx', content: 'my first job is'},
-            {company: 'al', content: 'my second job is'},
-          ],
-          education: [
-            {school: 'xx', content: 'bechelor'},
-            {school: 'xx', content: 'master'},
-          ],
-          projects: [
-            {name: 'website xxx', content: 'xxxx'},
-            {name: 'website xxx', content: 'xxxx'},
-          ],
-          awards: [
-            {name: 'award A', content: 'xxxxx'},
-            {name: 'award B', content: 'xxxxx'},
-          ],
-          contacts: [
-            {contact: 'phone', content: '18779778355'},
-            {contact: 'wechat', content: 'vipatlx'},
-          ],
+    computed: {
+      selected: {
+        get(){
+          return this.$store.state.selected
+        },
+        set(value){
+          return this.$store.commit('switchTab', value)
         }
-      }
-    }
+      },
+      resume(){
+        return this.$store.state.resume
+      },
+    },
+    methods: {
+    },
   }
 </script>
 
