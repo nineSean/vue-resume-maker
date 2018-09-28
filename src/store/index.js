@@ -8,18 +8,19 @@ const store = new Vuex.Store({
     resume: {
       config: [
         {field: 'profile', icon: 'id'},
-        {field: 'working history', icon: 'work'},
+        {field: 'workHistory', icon: 'work'},
         {field: 'education', icon: 'book'},
         {field: 'projects', icon: 'heart'},
         {field: 'awards', icon: 'cup'},
         {field: 'contacts', icon: 'phone'}
       ],
       profile: {
-        name: 'sean',
-        city: 'guangzhou',
-        title: 'frond-end developer'
+        name: '赖霄',
+        age: 29,
+        city: '广州',
+        title: 'Web前端开发'
       },
-      'working history': [
+      workHistory: [
         {company: 'xx', content: 'my first job is'},
         {company: 'al', content: 'my second job is'}
       ],

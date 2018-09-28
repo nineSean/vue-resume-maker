@@ -53,7 +53,7 @@
     background-color: #fff;
 
     box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
-    width: 35%;
+    min-width: 35%;
     display: flex;
     align-items: stretch;
     overflow: auto;

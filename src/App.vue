@@ -42,6 +42,7 @@ export default {
   flex-direction: column;
   align-items: center;
   font: 18px/1.5 "STHeitiSC-Light", sans-serif;
+  color: #333;
   background-color: #545;
   > header {
     width: 100%;
