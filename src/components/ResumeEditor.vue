@@ -10,17 +10,17 @@
     <ul class="panels">
       <li v-for='item in resume.config' v-show='item.field===selected'>
         <div v-if='resume[item.field] instanceof Array'>
-          <div class="subItem" v-for='subItem in resume[item.field]'>
+          <div class="subItem" v-for='(subItem, i) in resume[item.field]'>
             <div class="resumeField" v-for='(value,key) in subItem'>
               <label for="">{{key}}</label>
-              <input type="text" v-model=subItem[key]>
+              <input type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)">
             </div>
             <hr>
           </div>
         </div>
         <div v-else class="resumeField" v-for='(value,key) in resume[item.field]'>
           <label for="">{{key}}</label>
-          <input type="text" v-model=resume[item.field][key]>
+          <input type="text" :value="value" @input="changeResumeField(`${item.field}.${key}`, $event.target.value)">
         </div>
       </li>
     </ul>
@@ -44,6 +44,9 @@
       },
     },
     methods: {
+      changeResumeField(path, value){
+        this.$store.commit('updataResume',{path, value})
+      }
     },
   }
 </script>
