@@ -26,6 +26,10 @@ export default {
   components: { Topbar, ResumePreview, ResumeEditor },
   created(){
     document.body.insertAdjacentHTML('afterbegin', icons)
+    let state = localStorage.getItem('state')
+    if(state){
+      this.$store.commit('initState', JSON.parse(state))
+    }
   }
 };
 </script>

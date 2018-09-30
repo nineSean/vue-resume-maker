@@ -46,9 +46,14 @@ const store = new Vuex.Store({
   mutations: {
     switchTab (state, payload) {
       state.selected = payload
+      localStorage.setItem('state', JSON.stringify(state))
     },
     updataResume (state, {path, value}) {
       objectPath.set(state.resume, path, value)
+      localStorage.setItem('state', JSON.stringify(state))
+    },
+    initState (state, payload) {
+      Object.assign(state, payload) //必须用assign不改变state的引用
     }
   }
 })
