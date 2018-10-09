@@ -12,4 +12,7 @@ ul,ol{
 button{
   outline: none;
 }
+a{
+  color: inherit;
+}
 

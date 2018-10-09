@@ -53,7 +53,7 @@ const store = new Vuex.Store({
       localStorage.setItem('state', JSON.stringify(state))
     },
     initState (state, payload) {
-      Object.assign(state, payload) //必须用assign不改变state的引用
+      Object.assign(state, payload) // 必须用assign不改变state的引用
     }
   }
 })
