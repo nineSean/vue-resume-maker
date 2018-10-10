@@ -5,7 +5,10 @@ import objectPath from 'object-path'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
-    isLogined: false,
+    user: {
+      username: '',
+      id: ''
+    },
     selected: 'profile',
     resume: {
       config: [
@@ -55,6 +58,9 @@ const store = new Vuex.Store({
     },
     initState (state, payload) {
       Object.assign(state, payload) // 必须用assign不改变state的引用
+    },
+    setUser (state, payload) {
+      Object.assign(state.user, payload)
     }
   }
 })

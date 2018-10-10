@@ -4,16 +4,16 @@
       <h2>Vue Resume Maker</h2>
       <form>
         <div class="input-box">
-          <input type="text" class="username" required>
+          <input type="text" class="username" required v-model="username">
           <label for="">Username</label>
         </div>
         <div class="input-box">
-          <input type="password" class="password" required>
+          <input type="password" class="password" required v-model="password">
           <label for="">Password</label>
         </div>
         <div class="form-action">
-          <input type="submit" value="Login">
-          <input type="submit" value="Sign Up">
+          <input type="submit" value="Login" @click.prevent="login">
+          <input type="submit" value="Sign Up"  @click.prevent="signUp">
         </div>
       </form>
     </section>
@@ -22,14 +22,40 @@
 </template>
 
 <script>
-  import ParticlesJS from './ParticlesJS'
+  import ParticlesJS from "./ParticlesJS"
+  import AV from "../lib/leancloud.js"
+  import getAVUser from "../lib/getAVUser.js"
+
   export default {
     name: "LoginAndSignUp",
     components: { ParticlesJS },
     data(){
       return {
-
+        username: '',
+        password: ''
       }
+    },
+    methods: {
+      signUp(){
+        // 新建 AVUser 对象实例
+        var user = new AV.User()
+        // 设置用户名
+        user.setUsername(this.username)
+        // 设置密码
+        user.setPassword(this.password)
+        user.signUp().then((loggedInUser) => {
+          this.login()
+        }, (error) => {
+        })
+      },
+      login(){
+        AV.User.logIn(this.username, this.password).then((loggedInUser) => {
+          this.$store.commit('setUser', getAVUser(loggedInUser))
+        }, function (error) {
+        })
+      }
+    },
+    computed: {
     }
   }
 </script>

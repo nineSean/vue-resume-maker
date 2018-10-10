@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <LoginAndSignUp v-if="!isLogined" />
+    <LoginAndSignUp v-if="!true" />
     <div id="resume" v-else>
       <header>
         <Topbar/>
@@ -27,19 +27,13 @@ import AV from "./lib/leancloud.js"
 
 export default {
   name: "app",
+  data(){
+    return {
+    }
+  },
   store,
   components: { Topbar, ResumePreview, ResumeEditor, LoginAndSignUp},
   created() {
-
-
-var TestObject = AV.Object.extend('TestObject');
-var testObject = new TestObject();
-testObject.save({
-  words: 'Hello World!'
-}).then(function(object) {
-  alert('LeanCloud Rocks!');
-})
-
     document.body.insertAdjacentHTML("afterbegin", icons);
     let state = localStorage.getItem("state");
     if (state) {
@@ -47,9 +41,9 @@ testObject.save({
     }
   },
   computed: {
-    isLogined(){
-      return this.$store.isLogined
-    }
+    id(){
+      return this.$store.state.user.id
+    },
   }
 };
 </script>
