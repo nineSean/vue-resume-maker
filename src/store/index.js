@@ -9,6 +9,7 @@ const store = new Vuex.Store({
       username: '',
       id: ''
     },
+    preview: false,
     selected: 'profile',
     resume: {
       config: [
@@ -61,6 +62,9 @@ const store = new Vuex.Store({
     },
     setUser (state, payload) {
       Object.assign(state.user, payload)
+    },
+    togglePreview (state, payload) {
+      state.preview = payload
     }
   }
 })

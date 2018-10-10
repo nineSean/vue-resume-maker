@@ -1,5 +1,6 @@
 <template>
-  <div id="resumePreview">
+  <div id="resumePreview" :class="{previewed: preview}">
+    <button v-show="preview" @click="exitPreview">退出预览</button>
     <section data-name="profile" v-show="resume.profile">
       <h1>{{resume.profile.name}}</h1>
       <h2>{{resume.profile.title}}</h2>
@@ -65,6 +66,14 @@
     computed: {
       resume(){
         return this.$store.state.resume
+      },
+      preview(){
+        return this.$store.state.preview
+      }
+    },
+    methods: {
+      exitPreview(){
+        this.$store.commit('togglePreview', !this.$store.state.preview)
       }
     }
   }
@@ -75,9 +84,26 @@
   #resumePreview{
     background-color: $bgc;
 
+    position: relative;
     width: 62.5%;
     padding: 30px;
     overflow: auto;
+    &.previewed{
+      position: absolute;
+      margin: 100px auto;
+      overflow: inherit;
+    }
+    >button{
+      position: absolute;
+      right: 5px;
+      top: -40px;
+      width: 100px;
+      height: 32px;
+      margin-left: 16px;
+      &:hover {
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+    }
     h1{
       margin: 0;
       font: {

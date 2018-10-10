@@ -6,6 +6,9 @@
 *::after, *::before{
   box-sizing: border-box;
 }
+body{
+  background-color: #545;
+}
 ul,ol{
   list-style: none;
 }

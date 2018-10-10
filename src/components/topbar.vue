@@ -1,14 +1,25 @@
 <template>
   <div id ="topbar">
     <h1>简 历</h1>
-    <button>保存</button>
-    <button>预览</button>
+    <button @click="logout">登出</button>
+    <button @click="preview">预览</button>
   </div>
 </template>
 
 <script>
+import AV from "../lib/leancloud.js"
+import getAVUser from "../lib/getAVUser.js"
 export default {
-  name: "Topbar"
+  name: "Topbar",
+  methods: {
+    logout(){
+      AV.User.logOut()
+      this.$store.commit('setUser', getAVUser())
+    },
+    preview(){
+      this.$store.commit('togglePreview', !this.$store.state.preview)
+    }
+  }
 };
 </script>
 

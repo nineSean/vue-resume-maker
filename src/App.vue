@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <LoginAndSignUp v-if="!true" />
+    <LoginAndSignUp v-if="!id" />
     <div id="resume" v-else>
       <header>
-        <Topbar/>
+        <Topbar v-show="isShowed"/>
       </header>
       <main>
-        <ResumeEditor/>
+        <ResumeEditor v-show="isShowed"/>
         <ResumePreview/>
       </main>
     </div>
@@ -44,6 +44,9 @@ export default {
     id(){
       return this.$store.state.user.id
     },
+    isShowed(){
+      return !this.$store.state.preview
+    }
   }
 };
 </script>
@@ -62,7 +65,6 @@ export default {
     align-items: center;
     font: 18px/1.5 "STHeitiSC-Light", sans-serif;
     color: #333;
-    background-color: #545;
     > header {
       width: 100%;
     }
