@@ -15,6 +15,7 @@ export default {
     logout(){
       AV.User.logOut()
       this.$store.commit('setUser', getAVUser())
+      this.$store.commit('updateResume', {path: '', value: ''})
     },
     preview(){
       this.$store.commit('togglePreview', !this.$store.state.preview)

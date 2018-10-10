@@ -53,7 +53,7 @@ const store = new Vuex.Store({
       state.selected = payload
       localStorage.setItem('state', JSON.stringify(state))
     },
-    updataResume (state, {path, value}) {
+    updateResume (state, {path, value}) {
       objectPath.set(state.resume, path, value)
       localStorage.setItem('state', JSON.stringify(state))
     },

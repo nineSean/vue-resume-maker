@@ -16,6 +16,7 @@
           <input type="submit" value="Sign Up"  @click.prevent="signUp">
         </div>
       </form>
+      <div class="tip" v-show="errorMessage">Tips: {{errorMessage}}</div>
     </section>
     <ParticlesJS />
   </section>
@@ -32,7 +33,8 @@
     data(){
       return {
         username: '',
-        password: ''
+        password: '',
+        errorMessage: ''
       }
     },
     methods: {
@@ -46,12 +48,15 @@
         user.signUp().then((loggedInUser) => {
           this.login()
         }, (error) => {
+          console.log(error.rawMessage)
+          this.errorMessage = error.rawMessage
         })
       },
       login(){
         AV.User.logIn(this.username, this.password).then((loggedInUser) => {
           this.$store.commit('setUser', getAVUser(loggedInUser))
-        }, function (error) {
+        }, (error) => {
+          this.errorMessage = error.rawMessage
         })
       }
     },
@@ -145,6 +150,11 @@
         }
       }
     }
+  }
+  .tip{
+    position: absolute;
+    left: 10px;
+    top: 85%;
   }
 }
 </style>

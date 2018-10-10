@@ -45,7 +45,7 @@
     },
     methods: {
       changeResumeField(path, value){
-        this.$store.commit('updataResume',{path, value})
+        this.$store.commit('updateResume',{path, value})
       }
     },
   }
