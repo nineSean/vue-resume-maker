@@ -15,4 +15,7 @@ button{
 a{
   color: inherit;
 }
+input:required{
+  box-shadow: none;
+}
 

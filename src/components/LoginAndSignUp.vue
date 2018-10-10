@@ -1,7 +1,7 @@
 <template>
   <section class="loginAndSignUp">
     <section class="login-and-signup">
-      <h2>Vue resume maker</h2>
+      <h2>Vue Resume Maker</h2>
       <form>
         <div class="input-box">
           <input type="text" class="username" required>

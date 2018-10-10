@@ -5,6 +5,7 @@ import objectPath from 'object-path'
 Vue.use(Vuex)
 const store = new Vuex.Store({
   state: {
+    isLogined: false,
     selected: 'profile',
     resume: {
       config: [
