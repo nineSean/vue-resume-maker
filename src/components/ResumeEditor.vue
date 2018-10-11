@@ -64,6 +64,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
+    border: none;
     color: #fff;
     background-color: #ccc;
     font:{

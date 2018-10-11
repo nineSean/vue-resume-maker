@@ -112,8 +112,10 @@
     overflow: auto;
     &.previewed{
       position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
       margin: 100px auto;
-      overflow: inherit;
+      overflow: visible;
     }
     >button{
       position: absolute;
@@ -121,7 +123,6 @@
       top: -40px;
       width: 100px;
       height: 32px;
-      margin-left: 16px;
       &:hover {
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
       }
