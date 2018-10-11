@@ -77,8 +77,9 @@
       },
       shouldShow(){
         return (item, index) => {
-          console.log(++this.count)
-          return !this.isEmpty(item) // 性能问题
+          // console.log(++this.count)
+          // return !this.isEmpty(item) // 性能问题
+          return true
         }
       }
     },
