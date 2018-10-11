@@ -12,7 +12,7 @@
     <section data-name="project" v-show="resume.projects.length !== 0">
       <h2>项目经历</h2>
       <ol>
-        <li v-for="item in resume.projects" v-show="shouldShow(item)">
+        <li v-for="item in resume.projects" v-show="item.name !==''">
           <h3>{{item.name}}</h3>
           <hr>
           <p v-show=item.content>{{item.content}}</p>
@@ -22,7 +22,7 @@
     <section data-name="workHistory" v-show="resume.workHistory.length !== 0">
       <h2>工作经历</h2>
       <ol>
-        <li v-for="item in resume.workHistory" v-show="shouldShow(item)">
+        <li v-for="item in resume.workHistory" v-show="item.company !==''">
           <h3>{{item.company}}</h3>
           <hr>
           <p v-show=item.content>{{item.content}}</p>
@@ -42,7 +42,7 @@
     <section data-name="awards" v-show="resume.awards.length !== 0">
       <h2>获奖情况</h2>
       <ol>
-        <li v-for="item in resume.awards" v-show="shouldShow(item)">
+        <li v-for="item in resume.awards" v-show="item.name !==''">
           <h3>{{item.name}}</h3>
           <hr>
           <p>{{item.content}}</p>
@@ -52,7 +52,7 @@
     <section data-name="contacts" v-show="resume.contacts.length !== 0">
       <h2>联系方式</h2>
       <ol>
-        <li v-for="item in resume.contacts" v-show="shouldShow(item)">
+        <li v-for="item in resume.contacts" v-show="item.contact !== ''">
           <p>{{item.contact}}: {{item.content}}</p>
         </li>
       </ol>
@@ -65,7 +65,7 @@
     name: 'ResumePreview',
     data(){
       return {
-        count: 0 // 测试用
+
       }
     },
     computed: {
@@ -75,13 +75,6 @@
       preview(){
         return this.$store.state.preview
       },
-      shouldShow(){
-        return (item, index) => {
-          // console.log(++this.count)
-          // return !this.isEmpty(item) // 性能问题
-          return true
-        }
-      }
     },
     methods: {
       exitPreview(){

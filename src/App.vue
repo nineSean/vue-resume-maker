@@ -29,16 +29,22 @@ export default {
   name: "app",
   data(){
     return {
+      state
     }
   },
   store,
   components: { Topbar, ResumePreview, ResumeEditor, LoginAndSignUp},
   created() {
-    document.body.insertAdjacentHTML("afterbegin", icons);
-    let state = localStorage.getItem("state");
+    document.body.insertAdjacentHTML("afterbegin", icons)
+
+
+    let state = localStorage.getItem("state")
     if (state) {
-      this.$store.commit("initState", JSON.parse(state));
+      this.$store.commit("initState", JSON.parse(state))
     }
+  },
+  methods: {
+
   },
   computed: {
     id(){
