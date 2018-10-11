@@ -11,12 +11,14 @@
       <li v-for='item in resume.config' v-show='item.field===selected'>
         <div v-if='resume[item.field] instanceof Array'>
           <div class="subItem" v-for='(subItem, i) in resume[item.field]'>
+            <button class="remove" @click="deleteSubItem(item.field, i)">-</button>
             <div class="resumeField" v-for='(value,key) in subItem'>
               <label for="">{{key}}</label>
               <input type="text" :value="value" @input="changeResumeField(`${item.field}.${i}.${key}`, $event.target.value)">
             </div>
             <hr>
           </div>
+          <button class="add" @click="addSubItem(item.field)">+</button>
         </div>
         <div v-else class="resumeField" v-for='(value,key) in resume[item.field]'>
           <label for="">{{key}}</label>
@@ -46,15 +48,41 @@
     methods: {
       changeResumeField(path, value){
         this.$store.commit('updateResume',{path, value})
-      }
+      },
+      deleteSubItem(key, i){
+        console.log(key, i)
+        this.$store.commit('deleteSubItem', {key, i})
+      },
+      addSubItem(key){
+        console.log(key)
+        this.$store.commit('addSubItem', key)
+      },
     },
   }
 </script>
 
 <style scoped lang="scss">
+  button{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #ccc;
+    font:{
+      weight: 900;
+      size: 24px;
+    }
+    &.remove{
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+    &:hover{
+      box-shadow: 0 1px 3px #000;
+    }
+  }
   #resumeEditor{
     background-color: #fff;
-
     box-shadow:0 1px 3px 0 rgba(0,0,0,0.25);
     min-width: 35%;
     display: flex;
@@ -82,12 +110,16 @@
     >.panels{
       flex-grow: 1;
       position: relative;
+      overflow: auto;
       >li{
         position: absolute;
         left: 0;
         top: 0;
         padding: 24px;
         width: 100%;
+        .subItem{
+          position: relative;
+        }
         .resumeField{
           margin-top: 10px;
           >label{

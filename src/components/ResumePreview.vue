@@ -74,8 +74,18 @@
     methods: {
       exitPreview(){
         this.$store.commit('togglePreview', !this.$store.state.preview)
+      },
+      isEmpty(item){
+        return Object.keys(item).every(key => {
+          return item[key] === ''
+        })
       }
-    }
+    },
+    watch: {
+      // resume.workHistory: function(){
+
+      // }
+    },
   }
 </script>
 
