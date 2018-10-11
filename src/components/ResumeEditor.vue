@@ -50,11 +50,9 @@
         this.$store.commit('updateResume',{path, value})
       },
       deleteSubItem(key, i){
-        console.log(key, i)
         this.$store.commit('deleteSubItem', {key, i})
       },
       addSubItem(key){
-        console.log(key)
         this.$store.commit('addSubItem', key)
       },
     },

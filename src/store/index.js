@@ -17,7 +17,7 @@ const store = new Vuex.Store({
         {field: 'workHistory', icon: 'work', structure: {company: '', content: ''}},
         {field: 'education', icon: 'book', structure: {school: '', content: ''}},
         {field: 'projects', icon: 'heart', structure: {name: '', content: ''}},
-        {field: 'awards', icon: 'cup', structure: {award: '', content: ''}},
+        {field: 'awards', icon: 'cup', structure: {name: '', content: ''}},
         {field: 'contacts', icon: 'phone', structure: {contact: '', content: ''}}
       ],
       profile: {

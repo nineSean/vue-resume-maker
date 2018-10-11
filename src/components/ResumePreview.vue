@@ -9,27 +9,27 @@
         <small>{{resume.profile.age}}</small>
       </p>
     </section>
-    <section data-name="project" v-show="resume.projects">
+    <section data-name="project" v-show="resume.projects.length !== 0">
       <h2>项目经历</h2>
       <ol>
-        <li v-for="item in resume.projects">
+        <li v-for="item in resume.projects" v-show="shouldShow(item)">
           <h3>{{item.name}}</h3>
           <hr>
           <p v-show=item.content>{{item.content}}</p>
         </li>
       </ol>
     </section>
-    <section data-name="workHistory" v-show="resume.workHistory">
+    <section data-name="workHistory" v-show="resume.workHistory.length !== 0">
       <h2>工作经历</h2>
       <ol>
-        <li v-for="item in resume.workHistory">
+        <li v-for="item in resume.workHistory" v-show="shouldShow(item)">
           <h3>{{item.company}}</h3>
           <hr>
           <p v-show=item.content>{{item.content}}</p>
         </li>
       </ol>
     </section>
-    <section data-name="education" v-show="resume.education">
+    <section data-name="education" v-show="resume.education.length !== 0">
       <h2>毕业院校</h2>
       <ol>
         <li v-for="item in resume.education">
@@ -39,20 +39,20 @@
         </li>
       </ol>
     </section>
-    <section data-name="awards" v-show="resume.awards">
+    <section data-name="awards" v-show="resume.awards.length !== 0">
       <h2>获奖情况</h2>
       <ol>
-        <li v-for="item in resume.awards">
+        <li v-for="item in resume.awards" v-show="shouldShow(item)">
           <h3>{{item.name}}</h3>
           <hr>
-          <p v-show=item.content>{{item.content}}</p>
+          <p>{{item.content}}</p>
         </li>
       </ol>
     </section>
-    <section data-name="contacts" v-show="resume.contacts">
+    <section data-name="contacts" v-show="resume.contacts.length !== 0">
       <h2>联系方式</h2>
       <ol>
-        <li v-for="item in resume.contacts">
+        <li v-for="item in resume.contacts" v-show="shouldShow(item)">
           <p>{{item.contact}}: {{item.content}}</p>
         </li>
       </ol>
@@ -63,12 +63,23 @@
 <script>
   export default {
     name: 'ResumePreview',
+    data(){
+      return {
+        count: 0 // 测试用
+      }
+    },
     computed: {
       resume(){
         return this.$store.state.resume
       },
       preview(){
         return this.$store.state.preview
+      },
+      shouldShow(){
+        return (item, index) => {
+          console.log(++this.count)
+          return !this.isEmpty(item) // 性能问题
+        }
       }
     },
     methods: {
@@ -81,11 +92,11 @@
         })
       }
     },
-    watch: {
-      // resume.workHistory: function(){
-
-      // }
-    },
+    // watch: {
+    //   'resume.contacts': function(){
+    //     console.log('empty? ', this.isEmpty(this.resume.contacts))
+    //   }
+    // },
   }
 </script>
 
